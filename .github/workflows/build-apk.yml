@@ -16,6 +16,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Unpack RC-1
+            - name: Enable AndroidX
+        run: |
+          touch gradle.properties
+          echo 'android.useAndroidX=true' >> gradle.properties
+          echo 'android.enableJetifier=true' >> gradle.properties
         run: unzip -o rc1_upload.zip -d .
 
       - name: Set up Java
