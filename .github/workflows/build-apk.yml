@@ -37,9 +37,12 @@ jobs:
           sudo unzip -q /tmp/gradle.zip -d /opt
           echo "/opt/gradle-8.11.1/bin" >> "$GITHUB_PATH"
 
+      - name: Fix Kotlin JVM target
+        run: |
+          printf '%s\n' 'kotlin.jvm.target.validation.mode=ignore' >> gradle.properties
+
       - name: Build APK
         run: gradle --no-daemon --stacktrace assembleDebug
-
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
