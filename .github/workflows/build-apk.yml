@@ -14,7 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-            - name: Unpack RC-1
+
+      - name: Unpack RC-1
         run: unzip -o rc1_upload.zip -d .
 
       - name: Enable AndroidX
